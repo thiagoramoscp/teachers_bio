@@ -34,17 +34,29 @@ class block_teachers_bio extends block_base {
 
     /**
      * Gets the block contents.
-     *
+     *blockteateac
      * @return string The block HTML.
      */
     function get_content() {
+        global $COURSE;
+        global $USER;
+
         if ($this->content !== NULL) {
             return $this->content;
         }
 
         $this->content = new stdClass;
-        $this->content->text = 'texto';
         $this->content->footer = 'footer';
+        $this->content->text = $COURSE->id . ' ' . $USER->id . ' ' . $this->page->context->id;
+
+        //mdl_role_assignments
+        // select userid from mdl_role_assignments where contextid == $this->page->context->id and roleid == 3(professor)
+
+
+
+        //$data = ['YOUR DATA GOES HERE'];
+
+        //$this->content->text = $OUTPUT->render_from_template('block_teachers_bio/content', $data);
         
         return $this->content;
     }
